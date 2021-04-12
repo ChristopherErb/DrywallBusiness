@@ -1,4 +1,6 @@
 ﻿using DrywallCalc.Models;
+using DrywallCalc.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,17 +16,46 @@ namespace DrywallCalc.Controllers
         // GET: Employee
         public ActionResult Index()
         {
-            var model = new EmployeeListItem[0];
+
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new EmployeeService(userId);
+            var model = service.GetEmployees();
             return View(model);
         }
 
 
-
-        //CreateMethod
-
         public ActionResult Create()
         {
             return View();
+        }
+
+
+        //CreateMethod
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(EmployeeCreate model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var service = CreateEmployeeService();
+
+           if(service.CreateEmployee(model))
+            {
+                TempData["SaveResult"] = "Employee has successfully been added";
+                return RedirectToAction("Index");
+            };
+            ModelState.AddModelError("", "Employee cannot be added");
+            return View(model);
+        }
+
+        private EmployeeService CreateEmployeeService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new EmployeeService(userId);
+            return service;
         }
     }
 }

@@ -61,5 +61,15 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DrywallCalc.Data\DrywallCalc.Data.csproj">
+      <Project>{9bbf7286-4c97-4dbd-8754-811f0cc2aeca}</Project>
+      <Name>DrywallCalc.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DrywallCalc.Models\DrywallCalc.Models.csproj">
+      <Project>{c255b608-df94-4271-9856-8fe6e13bf6f8}</Project>
+      <Name>DrywallCalc.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

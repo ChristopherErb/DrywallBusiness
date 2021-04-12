@@ -39,7 +39,7 @@ namespace DrywallCalc.Services
 
         }
 
-        //See all employees created by X user
+        //See all employees
          public IEnumerable<EmployeeListItem> GetEmployees()
          {
             using (var ctx = new ApplicationDbContext())
@@ -47,7 +47,6 @@ namespace DrywallCalc.Services
                 var query =
                     ctx
                     .Employees
-                    .Where(e => e.Employee_Id == _userId)
                     .Select(
                         e => new EmployeeListItem
                         {
