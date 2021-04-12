@@ -63,8 +63,27 @@ namespace DrywallCalc.Services
 
          }
 
+      
+        public EmployeeDetail GetEmployeeById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Employees
+                    .Single(e => e.Employee_Id == _userId);
 
+                    return
+                        new EmployeeDetail
+                        {
+                            Title = entity.Title,
+                            FullName = entity.FullName,
+                            PayRate = entity.PayRate,
+                            HireDate = entity.HireDate
 
+                        };
+            }
+        }
 
 
 
