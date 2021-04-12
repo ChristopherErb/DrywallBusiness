@@ -7,19 +7,21 @@ using System.Threading.Tasks;
 
 namespace DrywallCalc.Models
 {
-    public class EmployeeCreate
+   public class EmployeeListItem
     {
-       [Required]
-       [MinLength(2, ErrorMessage ="Please enter the first and last name")]
-        [MaxLength(100, ErrorMessage = "Please Enter a shorter name")]
+        [Display(Name = "Full Name")]
         public String FullName { get; set; }
 
-        [Required]
+        [Display(Name = "Job Title")]
         public String Title { get; set; }
-       
+
+
+        [Display(Name="Hired")]
         public DateTimeOffset HireDate { get; set; }
 
-        [Required]
+
+        [Display(Name = "Pay Rate Per Hour")]
         public Decimal PayRate { get; set; }
+
     }
 }
