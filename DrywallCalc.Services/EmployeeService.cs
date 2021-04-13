@@ -11,9 +11,9 @@ namespace DrywallCalc.Services
     public class EmployeeService
     {
 
-        private readonly Guid _userId;
+        private readonly String _userId;
 
-        public EmployeeService (Guid userId)
+        public EmployeeService (String userId)
         {
             _userId = userId;
         }
@@ -64,12 +64,12 @@ namespace DrywallCalc.Services
          }
 
       
-        public EmployeeDetail GetEmployeeById(int id)
+        public EmployeeDetail GetEmployeeById(string)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
-                    ctx
+                   ctx
                     .Employees
                     .Single(e => e.Employee_Id == _userId);
 

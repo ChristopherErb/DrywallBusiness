@@ -9,7 +9,7 @@ namespace DrywallCalc.Data
     public class Employee
     {
         [Key]
-        public Guid Employee_Id { get; set; }
+        public string Employee_Id { get; set; }
 
         [Required]
         public String FullName { get; set; }

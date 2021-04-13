@@ -53,7 +53,7 @@ namespace DrywallCalc.Controllers
 
         private EmployeeService CreateEmployeeService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
+            var userId = User.Identity.GetUserId();
             var service = new EmployeeService(userId);
             return service;
         }
