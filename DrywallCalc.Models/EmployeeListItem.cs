@@ -9,6 +9,10 @@ namespace DrywallCalc.Models
 {
    public class EmployeeListItem
     {
+
+        public String Employee_Id { get; set; }
+
+
         [Display(Name = "Full Name")]
         public String FullName { get; set; }
 

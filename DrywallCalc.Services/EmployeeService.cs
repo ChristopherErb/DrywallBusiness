@@ -83,7 +83,28 @@ namespace DrywallCalc.Services
 
                         };
             }
+
         }
+             public bool UpdateEmployee(EmployeeEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Employees
+                    .Single(e => e.Employee_Id == model.Employee_Id);
+
+                entity.Title = model.Title;
+                entity.FullName = model.FullName;
+                entity.PayRate = (decimal)model.PayRate;
+
+                return ctx.SaveChanges() == 1;
+            
+            };
+
+
+
+         }
 
 
 

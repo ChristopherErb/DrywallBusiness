@@ -58,6 +58,19 @@ namespace DrywallCalc.Controllers
             return service;
         }
 
+        public ActionResult Edit(string id)
+        {
+            var service = CreateEmployeeService();
+            var detail = service.GetEmployeeById(id);
+            var model =
+            new EmployeeEdit
+            {
+                FullName = detail.FullName,
+                Title = detail.Title,
+                PayRate = detail.PayRate
+            };
+            return View(model);
+        }
         public ActionResult Details(string  userId)
         {
             var svc = CreateEmployeeService();
