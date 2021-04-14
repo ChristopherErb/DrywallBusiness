@@ -17,7 +17,7 @@ namespace DrywallCalc.Controllers
         public ActionResult Index()
         {
 
-            var userId = Guid.Parse(User.Identity.GetUserId());
+            var userId = (User.Identity.GetUserId());
             var service = new EmployeeService(userId);
             var model = service.GetEmployees();
             return View(model);
@@ -57,5 +57,13 @@ namespace DrywallCalc.Controllers
             var service = new EmployeeService(userId);
             return service;
         }
+
+        public ActionResult Details(string  userId)
+        {
+            var svc = CreateEmployeeService();
+            var model = svc.GetEmployeeById(userId);
+            return View(model);
+        }
     }
+    
 }

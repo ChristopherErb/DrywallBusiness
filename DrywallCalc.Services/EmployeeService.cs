@@ -23,7 +23,7 @@ namespace DrywallCalc.Services
             var entity =
                 new Employee()
                 {
-                    Employee_Id = _userId,
+                    Employee_Id = Guid.NewGuid().ToString(),
                     FullName = model.FullName,
                     Title = model.Title,
                     PayRate = model.PayRate,
@@ -64,7 +64,7 @@ namespace DrywallCalc.Services
          }
 
       
-        public EmployeeDetail GetEmployeeById(string)
+        public EmployeeDetail GetEmployeeById(string id)
         {
             using (var ctx = new ApplicationDbContext())
             {

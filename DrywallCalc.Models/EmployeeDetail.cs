@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace DrywallCalc.Models
 {
-    class EmployeeDetail
+    public class EmployeeDetail
     {
+        public Guid Employee_Id { get; set; }
+
+       
+        public String FullName { get; set; }
+
+        
+        public String Title { get; set; }
+
+        public DateTimeOffset HireDate { get; set; }
+
+      
+        public Decimal PayRate { get; set; }
     }
 }
