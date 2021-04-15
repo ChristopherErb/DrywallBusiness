@@ -1,4 +1,6 @@
 ﻿using DrywallCalc.Models;
+using DrywallCalc.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +15,13 @@ namespace DrywallCalc.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            var model = new MaterialListItem[0];
+
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new MaterialService(userId);
+            var model = service.GetMaterials();
             return View(model);
         }
+
 
         public ActionResult Create()
         {
@@ -23,16 +29,30 @@ namespace DrywallCalc.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryTokenAttribute]
+        [ValidateAntiForgeryToken]
+
         public ActionResult Create(MaterialCreate model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(model);
+            
+
+            var service = CreateMaterialService();
+
+            if (service.CreateMaterial(model))
             {
+                TempData["SaveResult"] = "Your material has been saved.";
+                return RedirectToAction("Index");
+            };
 
-            }
-
+            ModelState.AddModelError("", "Material Could not be created.");
             return View(model);
         }
 
+        private MaterialService CreateMaterialService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new MaterialService(userId);
+            return service;
+        }
     }
 }

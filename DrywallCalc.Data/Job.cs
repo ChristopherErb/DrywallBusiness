@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ namespace DrywallCalc.Data
         public String Owner { get; set; }
         public int CurrentJobId { get; set; }
         public DateTimeOffset Created { get; set; }
+
+        [Key]
         public Guid JobOwnerId { get; set; }
     }
 }
