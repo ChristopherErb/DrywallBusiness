@@ -106,7 +106,20 @@ namespace DrywallCalc.Services
 
          }
 
+        public bool DeleteEmployee(int Employee_Id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Employees
+                        .Single(e => e.Employee_Id == _userId);
 
+                ctx.Employees.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
 
     }
