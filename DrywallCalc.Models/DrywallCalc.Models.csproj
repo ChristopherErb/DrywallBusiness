@@ -58,6 +58,10 @@
     <Compile Include="EmployeeDetail.cs" />
     <Compile Include="EmployeeEdit.cs" />
     <Compile Include="EmployeeListItem.cs" />
+    <Compile Include="JobCreate.cs" />
+    <Compile Include="JobListItem.cs" />
+    <Compile Include="MaterialCreate.cs" />
+    <Compile Include="MaterialListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
