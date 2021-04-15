@@ -61,5 +61,28 @@ namespace DrywallCalc.Services
             }
         }
 
+        public JobDetail GetJobById(int id)
+        {
+
+            using (var ctx = new ApplicationDbContext())
+
+            {
+                var entity =
+                    ctx
+                    .Jobs
+                    .Single(e => e.CurrentJobId == id && e.JobOwnerId == _userId);
+                return
+                    new JobDetail
+                    {
+                        CurrentJobId = entity.CurrentJobId,
+                        Title = entity.Title,
+                        Address = entity.Address,
+                        Owner = entity.Owner
+
+                    };
+            }
+
+        }
+
     }
 }

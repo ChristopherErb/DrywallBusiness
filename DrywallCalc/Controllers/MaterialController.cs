@@ -48,6 +48,40 @@ namespace DrywallCalc.Controllers
             return View(model);
         }
 
+
+
+        public ActionResult Details(int id)
+        {
+            var svc = CreateMaterialService();
+            var model = svc.GetMaterialById(id);
+            return View(model);
+        }
+
+
+        public bool UpdateMaterial(MaterialEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Materials
+                        .Single(e => e.ManagerId == model.ManagerId);
+
+                entity.JobTitle = model.JobTitle;
+                entity.LightBlueMud = model.LightBlueMud;
+                entity.AllBlackMud = model.AllBlackMud;
+                entity.EightBoard = model.EightBoard;
+                entity.TenBoard = model.TenBoard;
+                entity.TwelveBoard = model.TwelveBoard;
+
+                    entity.Screws = model.Screws;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+
+
         private MaterialService CreateMaterialService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

@@ -59,8 +59,12 @@
     <Compile Include="EmployeeEdit.cs" />
     <Compile Include="EmployeeListItem.cs" />
     <Compile Include="JobCreate.cs" />
+    <Compile Include="JobDetail.cs" />
+    <Compile Include="JobEdit.cs" />
     <Compile Include="JobListItem.cs" />
     <Compile Include="MaterialCreate.cs" />
+    <Compile Include="MaterialDetail.cs" />
+    <Compile Include="MaterialEdit.cs" />
     <Compile Include="MaterialListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

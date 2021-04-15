@@ -57,6 +57,31 @@ namespace DrywallCalc.Services
             }
         }
 
+        public MaterialDetail GetMaterialById(int id)
+        {
+
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Materials
+                    .Single(e => e.MatOwnerID == _userId && e.ManagerId == id);
+                return
+                    new MaterialDetail
+                    {
+                        AllBlackMud = entity.AllBlackMud,
+                        LightBlueMud = entity.LightBlueMud,
+                        EightBoard = entity.EightBoard,
+                        TenBoard = entity.TenBoard,
+                        TwelveBoard = entity.TwelveBoard,
+                        Screws = entity.Screws,
+                        JobTitle = entity.JobTitle,
+                        ManagerId = entity.ManagerId
+
+                    };
+            }
+
+        }
 
     }
 }

@@ -46,6 +46,38 @@ namespace DrywallCalc.Controllers
             return View(model);
         }
 
+        public ActionResult Details(int id)
+        {
+            var svc = CreateJobService();
+            var model = svc.GetJobById(id);
+
+            return View(model);
+        }
+
+
+        public bool UpdateJob(JobEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Jobs
+                        .Single(e => e.CurrentJobId == model.CurrentJobId);
+
+                entity.Address = model.Address;
+                entity.CurrentJobId = model.CurrentJobId;
+                entity.Title = model.Title;
+                entity.Owner = model.Owner;
+
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+
+
+
+
         private JobService CreateJobService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
