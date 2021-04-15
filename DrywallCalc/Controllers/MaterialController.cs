@@ -21,5 +21,18 @@ namespace DrywallCalc.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryTokenAttribute]
+        public ActionResult Create(MaterialCreate model)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+
+            return View(model);
+        }
+
     }
 }

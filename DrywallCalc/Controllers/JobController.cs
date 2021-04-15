@@ -22,5 +22,17 @@ namespace DrywallCalc.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryTokenAttribute]
+        public ActionResult Create(JobCreate model)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+
+            return View(model);
+        }
+
     }
 }

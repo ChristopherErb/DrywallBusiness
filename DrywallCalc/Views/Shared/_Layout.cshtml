@@ -26,6 +26,8 @@
 @if (User.Identity.IsAuthenticated)
 { 
                     <li>@Html.ActionLink("Employees", "Index", "Employee")</li>
+                    <li>@Html.ActionLink("Jobs", "Index", "Job")</li>
+                    <li>@Html.ActionLink("Materials", "Index", "Material")</li>
 }
 
 
