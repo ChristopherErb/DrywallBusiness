@@ -33,6 +33,8 @@ namespace DrywallCalc.Models
             return new ApplicationDbContext();
         }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Material> Materials { get; set; }
+        public DbSet<Job> Jobs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

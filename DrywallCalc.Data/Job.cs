@@ -13,5 +13,6 @@ namespace DrywallCalc.Data
         public String Owner { get; set; }
         public int CurrentJobId { get; set; }
         public DateTimeOffset Created { get; set; }
+        public Guid JobOwnerId { get; set; }
     }
 }

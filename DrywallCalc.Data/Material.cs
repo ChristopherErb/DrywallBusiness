@@ -16,6 +16,7 @@ namespace DrywallCalc.Data
         public int AllBlackMud { get; set; }
         public String JobTitle { get; set; }
         public int ManagerId { get; set; }
+        public Guid MatOwnerID { get; set; }
 
     }
 }
